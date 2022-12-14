@@ -1,6 +1,10 @@
 name: "Get Prev Tag"
 description: "Get previous git tag"
 
+branding:
+  icon: "tag"
+  color: "gray-dark"
+
 outputs:
   prev-tag:
     description: "Previous Git Tag"
