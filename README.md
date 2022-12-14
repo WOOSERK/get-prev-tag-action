@@ -23,5 +23,5 @@ jobs:
 
 ## ETC
 
-22.12.15 v0.1.0 release
-22.12.15 v0.1.1 release
+- 22.12.15 v0.1.0 release
+- 22.12.15 v0.1.1 release
