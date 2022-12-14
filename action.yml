@@ -1,0 +1,23 @@
+name: "Get Prev Tag"
+description: "Get previous git tag"
+
+outputs:
+  prev-tag:
+    description: "Previous Git Tag"
+    value: ${{ steps.prev-tag-finder.outputs.prev-tag }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: tag-count
+      run: echo tag-count=$(git tag | tail -n 2 | wc -l) >> $GITHUB_OUTPUT
+
+    - name: prev-tag-finder
+      id: prev-tag-finder
+      run: |
+        if [ ${{steps.tag-count.outputs.tag-count }} -lt 2 ]; then
+          echo "You have less than 2 tags. So prev-tag is set to v1.0.0"
+          echo prev-tag=v1.0.0 >> $GITHUB_OUTPUT
+        else
+          echo prev-tag=$(git tag | tail -n 2 | head -n 1) >> $GITHUB_OUTPUT
+        fi
